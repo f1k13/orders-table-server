@@ -1,4 +1,3 @@
-import { unique } from "next/dist/build/utils";
 import { DataTypes } from "sequelize";
 import { Column, HasMany, Model, Table } from "sequelize-typescript";
 import { Comments } from "src/comments/comments.model";
@@ -51,6 +50,10 @@ export class Orders extends Model<Orders, OrderCreationAttributes> {
     type: DataTypes.STRING,
   })
   statusOrder: string;
+  @Column({
+    type: DataTypes.STRING,
+  })
+  ati: string;
   @HasMany(() => Comments)
   comments: Comments[];
 }

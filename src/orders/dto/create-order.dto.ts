@@ -21,4 +21,8 @@ export class CreateOrderDto {
 
   @ApiProperty({ description: "Status of the order" })
   statusOrder: string;
+  @ApiProperty({ description: "ATI code" })
+  ati: string;
+  @ApiProperty({ description: "Comments" })
+  comments: string[]
 }

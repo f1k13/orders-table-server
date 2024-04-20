@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Req } from "@nestjs/common";
+import { Controller, Post, Body, Get, Req, Query } from "@nestjs/common";
 import { CreateCommentsDto } from "./dto/create-comments.dto";
 import { CommentsService } from "./comments.service";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
@@ -22,7 +22,11 @@ export class CommentsController {
     type: [CreateCommentsDto],
   })
   @Get("/getOfOrder")
-  getOfOrder(@Req() req: { id: number }) {
-    return this.commentsService.getCommentsOfOrder(req.id);
+  getOfOrder(@Query() query: { id: number }) {
+    return this.commentsService.getCommentsOfOrder(query.id);
+  }
+  @Get("/all")
+  getAllComments() {
+    return this.commentsService.getAllComments();
   }
 }

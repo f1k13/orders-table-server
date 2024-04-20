@@ -14,7 +14,7 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  private readonly secretKey = process.env.PRIVATE_KEY || "EGORLOX";
+  private readonly secretKey = process.env.PRIVATE_KEY || "ARCHLINUX";
 
   async login(dto: CreateUserDto) {
     const user = await this.validateUser(dto);

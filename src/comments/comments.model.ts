@@ -1,6 +1,11 @@
-import { unique } from "next/dist/build/utils";
-import { BelongsTo, DataTypes } from "sequelize";
-import { Column, ForeignKey, Model, Table } from "sequelize-typescript";
+import { DataTypes } from "sequelize";
+import {
+  BelongsTo,
+  Column,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
 import { Orders } from "src/orders/orders.model";
 
 interface CommentCreationAttributes {

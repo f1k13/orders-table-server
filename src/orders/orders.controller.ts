@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from "@nestjs/common";
+import { Controller, Get, Post, Body, Delete, Query } from "@nestjs/common";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { CreateOrderDto } from "./dto/create-order.dto";
 import { OrdersService } from "./orders.service";
@@ -25,5 +25,10 @@ export class OrdersController {
   @Get("/getOrders")
   getOrder() {
     return this.OrdersService.getOrders();
+  }
+  @ApiOperation({ summary: "Delete order" })
+  @Delete("/delete")
+  deleteOrder(@Query() query: { id: number }) {
+    return this.OrdersService.deleteOrder(query.id);
   }
 }

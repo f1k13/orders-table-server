@@ -1,6 +1,4 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Comments } from "src/comments/comments.model";
-import { CreateCommentsDto } from "src/comments/dto/create-comments.dto";
 
 export class GetOrderDto {
   @ApiProperty({ description: "Order id" })
@@ -22,8 +20,8 @@ export class GetOrderDto {
 
   @ApiProperty({ description: "Phone number of the carrier" })
   phoneNumberOfCarrier: string;
-  @ApiProperty({ description: "Comments", type: [CreateCommentsDto] })
-  comments: CreateCommentsDto[];
+  @ApiProperty({ description: "Comments" })
+  comments:string[];
   @ApiProperty({ description: "Status of the order" })
   statusOrder: string;
 }
