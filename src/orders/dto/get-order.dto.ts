@@ -20,8 +20,6 @@ export class GetOrderDto {
 
   @ApiProperty({ description: "Phone number of the carrier" })
   phoneNumberOfCarrier: string;
-  @ApiProperty({ description: "Comments" })
-  comments:string[];
   @ApiProperty({ description: "Status of the order" })
   statusOrder: string;
 }
