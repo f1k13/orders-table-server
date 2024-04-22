@@ -1,11 +1,5 @@
 import { DataTypes } from "sequelize";
-import {
-  BelongsTo,
-  Column,
-  ForeignKey,
-  Model,
-  Table,
-} from "sequelize-typescript";
+import { Column, ForeignKey, Model, Table } from "sequelize-typescript";
 import { Orders } from "src/orders/orders.model";
 
 interface CommentCreationAttributes {

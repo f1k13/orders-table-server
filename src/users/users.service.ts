@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { User } from "./users.model";
@@ -23,16 +23,12 @@ export class UsersService {
   }
   async getUserById(id: number) {
     const user = await this.userRepository.findOne({ where: { id } });
-    //   if (!user) {
-    //     throw new HttpException("User not found", HttpStatus.NOT_FOUND);
-    //   }
+
     return user;
   }
   async getUserByUsername(username: string) {
     const user = await this.userRepository.findOne({ where: { username } });
-    // if (!user) {
-    //   throw new HttpException("User not found", HttpStatus.NOT_FOUND);
-    // }
+
     return user;
   }
 }

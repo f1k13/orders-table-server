@@ -4,7 +4,7 @@ export class GetOrderDto {
   @ApiProperty({ description: "Order id" })
   id: number;
   @ApiProperty({ description: "Order number" })
-  numberOrder: number;
+  numberOrder: string;
 
   @ApiProperty({ description: "Date of the order" })
   date: string;
@@ -22,4 +22,6 @@ export class GetOrderDto {
   phoneNumberOfCarrier: string;
   @ApiProperty({ description: "Status of the order" })
   statusOrder: string;
+  @ApiProperty({ description: "ati" })
+  ati: string;
 }

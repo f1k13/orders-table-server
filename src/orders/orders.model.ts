@@ -3,7 +3,7 @@ import { Column, HasMany, Model, Table } from "sequelize-typescript";
 import { Comments } from "src/comments/comments.model";
 
 interface OrderCreationAttributes {
-  numberOrder: number;
+  numberOrder: string;
   date: string;
   time: string;
   nameOfClientsCompany: string;
@@ -22,10 +22,10 @@ export class Orders extends Model<Orders, OrderCreationAttributes> {
   })
   id: number;
   @Column({
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     unique: true,
   })
-  numberOrder: number;
+  numberOrder: string;
   @Column({
     type: DataTypes.STRING,
   })

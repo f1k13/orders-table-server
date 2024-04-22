@@ -11,7 +11,6 @@ import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { CreateOrderDto } from "./dto/create-order.dto";
 import { OrdersService } from "./orders.service";
 import { GetOrderDto } from "./dto/get-order.dto";
-import { query } from "express";
 
 @ApiTags("orders")
 @Controller("orders")
@@ -78,5 +77,14 @@ export class OrdersController {
   @Get("/sorting")
   sortingOrder(@Query() query: { sortBy: string; sortOrder: string }) {
     return this.OrdersService.sortingOrder(query.sortBy, query.sortOrder);
+  }
+  @ApiOperation({ summary: "Search orders" })
+  @ApiResponse({
+    status: 200,
+    description: "List of sorting order",
+  })
+  @Get("/search")
+  searchOrder(@Query() query: { title: string }) {
+    return this.OrdersService.searchOrders(query.title);
   }
 }

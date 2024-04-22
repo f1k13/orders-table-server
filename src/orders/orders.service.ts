@@ -3,6 +3,7 @@ import { InjectModel } from "@nestjs/sequelize";
 import { Orders } from "./orders.model";
 import { CreateOrderDto } from "./dto/create-order.dto";
 import { GetOrderDto } from "./dto/get-order.dto";
+import { Op } from "sequelize";
 
 @Injectable()
 export class OrdersService {
@@ -22,8 +23,18 @@ export class OrdersService {
     }
     dto.statusOrder = "Новая";
     const order = await this.orderRepository.create(dto);
-    return order;
+    const totalCount = await this.orderRepository.count();
+    return { order, totalCount };
   }
+  async searchOrders(title: string) {
+    const orders = await this.orderRepository.findAll({
+      where: {
+        numberOrder: { [Op.like]: `%${title}%` },
+      },
+    });
+    return orders;
+  }
+
   async getOrders(page: number = 1, pageSize: number = 10) {
     const offset = (page - 1) * pageSize;
 
@@ -31,8 +42,9 @@ export class OrdersService {
       offset,
       limit: pageSize,
     });
+    const totalCount = await this.orderRepository.count();
 
-    return orders;
+    return { orders, totalCount };
   }
   async deleteOrder(id: number) {
     await this.orderRepository.destroy({ where: { id } });
@@ -54,6 +66,7 @@ export class OrdersService {
     order.nameOfCarrier = dto.nameOfCarrier;
     order.phoneNumberOfCarrier = dto.phoneNumberOfCarrier;
     order.statusOrder = dto.statusOrder;
+    order.ati = dto.ati;
 
     await order.save();
     await order.reload();
@@ -72,7 +85,7 @@ export class OrdersService {
     if (dto.phoneNumberOfCarrier !== undefined)
       filters.phoneNumberOfCarrier = dto.phoneNumberOfCarrier;
     if (dto.statusOrder !== undefined) filters.statusOrder = dto.statusOrder;
-
+    console.log(filters.statusOrder);
     const filteredOrders = await this.orderRepository.findAll({
       where: filters,
     });

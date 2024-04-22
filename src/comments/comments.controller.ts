@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Req, Query } from "@nestjs/common";
+import { Controller, Post, Body, Get, Query } from "@nestjs/common";
 import { CreateCommentsDto } from "./dto/create-comments.dto";
 import { CommentsService } from "./comments.service";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
